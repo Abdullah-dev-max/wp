@@ -16,7 +16,7 @@ jobs:
       - name: Install SSH key
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{ secrets.VM_KEY }}
+          ssh-private-key: ${{ SECRETS_VM_KEY }}
 
       - name: Deploy to VM
         run: |
