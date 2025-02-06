@@ -16,10 +16,11 @@ jobs:
       - name: Install SSH key
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{ SECRETS_VM_KEY }}
+          ssh-private-key: ${{ secrets.SECRETS_VM_KEY }}  # Correct secret reference
 
       - name: Deploy to VM
         run: |
-          ssh -t -o StrictHostKeyChecking=no ubuntu@${{ SECRETS_VM_IP }} << 'EOF'
-          cd ~/var/www/html
+          ssh -t -o StrictHostKeyChecking=no ubuntu@${{ secrets.SECRETS_VM_IP }} << 'EOF'
+          cd ubuntu/var/www/html  # Fixed the directory path
           git pull origin main
+          EOF
