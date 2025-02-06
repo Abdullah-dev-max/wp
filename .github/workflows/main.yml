@@ -21,6 +21,6 @@ jobs:
       - name: Deploy to VM
         run: |
           ssh -t -o StrictHostKeyChecking=no ubuntu@${{ secrets.VM_IP }} << 'EOF'
-          cd ubuntu/var/www/html  # Fixed the directory path
+          cd /var/www/html  # Fixed the directory path
           git pull origin main
           EOF
